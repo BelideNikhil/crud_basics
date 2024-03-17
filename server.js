@@ -3,6 +3,7 @@ import { writeFileSync } from "fs";
 import users from "./data.json" assert { type: "json" };
 import { v4 as uuidv4 } from "uuid";
 import { bodyParser } from "./utils.js";
+import "dotenv/config";
 
 const regexV4 = new RegExp(
   /^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i
@@ -73,11 +74,10 @@ const server = createServer(async (request, response) => {
   }
 });
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 server.listen(PORT, () => console.log(`listening on port ${PORT}`));
 
 // enhancements
 // Controller
 // Error handling
-// process env
